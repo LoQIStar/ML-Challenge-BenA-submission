@@ -3,7 +3,8 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
 [![TensorRT](https://img.shields.io/badge/TensorRT-8.6+-green.svg)](https://developer.nvidia.com/tensorrt)
 
-> High-performance Vision Transformer implementation with quantization, hyperparameter optimization, and TensorRT acceleration
+> Vision Transformer implementation with quantization, hyperparameter optimization, and TensorRT acceleration.
+> from the repo: https://github.com/kashmirintelligence/ML-Engineer-Challenge
 
 ## 📋 Table of Contents
 - [Overview](#overview)
