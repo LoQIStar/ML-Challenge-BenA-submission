@@ -126,9 +126,9 @@ def create_model_comparison_radar():
     metrics = ['Inference Speed', 'Memory Usage', 'Accuracy', 'Model Size', 'Throughput']
     
     implementations = {
-        'Original': [0.6, 0.4, 1.0, 0.3, 0.5],
-        'Quantized': [0.8, 0.7, 0.98, 0.7, 0.7],
-        'Optimized': [0.9, 0.8, 0.97, 0.8, 0.9]
+        'Original (ViT)': [0.6, 0.4, 1.0, 0.3, 0.5],
+        'Quantized (INT8)': [0.8, 0.7, 0.98, 0.7, 0.7],
+        'TensorRT (FP16)': [0.9, 0.8, 0.97, 0.8, 0.9]
     }
     
     # Create radar plot using plotly

@@ -60,9 +60,20 @@ git clone https://github.com/yourusername/vit-optimization.git
 # Install dependencies
 pip install -r requirements.txt
 
+# Create dummy models for testing (or download real models if available)
+python utils/model_utils.py
+
 # Run inference
 python run_inference.py --model quantized --batch_size 32
 ```
+
+## 📊 Model Availability
+The repository supports three model variants:
+- Original ViT model (`part1/models/vit_base_original.pth`)
+- Quantized model (`part1/models/vit_base_quantized.pth`)
+- TensorRT optimized model (`part3/models/vit_base_tensorrt.pth`)
+
+For testing purposes, dummy models will be automatically created if the real models are not found.
 
 ## 📊 Performance Results
 
