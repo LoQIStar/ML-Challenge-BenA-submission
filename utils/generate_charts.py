@@ -2,8 +2,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def create_performance_chart():
-    # Replace seaborn style with a built-in matplotlib style
-    plt.style.use('default')  # or try 'classic', 'fivethirtyeight', etc.
+    # Try to use seaborn style, fall back to default if not available
+    try:
+        plt.style.use('seaborn')
+    except OSError:
+        plt.style.use('default')  # Fallback to built-in style
+        print("Note: Using default style. For better visualizations, install seaborn: pip install seaborn")
     
     # Data
     metrics = ['Inference Time (ms)', 'Memory Usage (MB)', 'Model Size (MB)']
@@ -54,7 +58,7 @@ def create_performance_chart():
     
     # Adjust layout and save
     plt.tight_layout()
-    plt.savefig('performance_chart.png', dpi=300, bbox_inches='tight')
+    plt.savefig('docs/assets/performance_chart.png', dpi=300, bbox_inches='tight')
     plt.close()
 
 if __name__ == "__main__":

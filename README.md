@@ -84,8 +84,7 @@ Recommended production setup:
 - Distributed training capabilities
 
 ## 📈 Benchmarking Results
-![Performance Comparison](path/to/performance_chart.png)
-[Note: Add actual performance visualization]
+![Performance Comparison: Original vs Optimized Model](docs/assets/performance_chart.png)
 
 ## 📝 License
 MIT License - see LICENSE file for details
