@@ -2,22 +2,22 @@
 ## Part 3: TensorRT Implementation and Performance Analysis
 
 ### Overview
-This report documents the implementation and results of converting our pre-trained Vision Transformer model to TensorRT format for accelerated inference on NVIDIA GPUs. We followed a systematic approach to optimize the model while maintaining accuracy and measuring performance improvements.
+This report documents the implementation and results of converting my pre-trained Vision Transformer model to TensorRT format for accelerated inference on NVIDIA GPUs. I followed a systematic approach to optimize the model while maintaining accuracy and measuring performance improvements.
 
 ### Implementation Process
 
 #### Model Preparation and Export
-We began with our quantized ViT model from Part 1, which already demonstrated strong performance characteristics. The model was first exported to ONNX format using PyTorch's built-in export functionality. We implemented careful error handling and validation to ensure the ONNX model maintained identical behavior to the original PyTorch implementation.
+I began with my quantized ViT model from Part 1, which already demonstrated strong performance characteristics. The model was first exported to ONNX format using PyTorch's built-in export functionality. I implemented careful error handling and validation to ensure the ONNX model maintained identical behavior to the original PyTorch implementation.
 
 #### TensorRT Conversion
-The ONNX model was then converted to TensorRT format using NVIDIA's TensorRT toolkit. We implemented several optimization strategies:
+The ONNX model was then converted to TensorRT format using NVIDIA's TensorRT toolkit. I implemented several optimization strategies:
 - FP16 precision optimization where hardware supported it
 - Dynamic batching capabilities for flexible deployment
 - Workspace memory optimization set to 1GB
 - Custom optimization profiles for various batch sizes
 
 #### Performance Measurement Methodology
-We conducted comprehensive benchmarking using the following protocol:
+I conducted comprehensive benchmarking using the following protocol:
 - Batch sizes: 1, 8, 16, 32, 64
 - 1000 inference iterations per configuration
 - Warm-up period of 100 iterations
@@ -46,14 +46,14 @@ We conducted comprehensive benchmarking using the following protocol:
 - Model Size: 86MB (compressed)
 
 ### Conclusions
-The conversion to TensorRT format has yielded significant performance improvements while maintaining model accuracy. The implementation successfully balances:
+The conversion to TensorRT format has yielded significant performance improvements while maintaining model accuracy. My implementation successfully balances:
 - Inference speed optimization
 - Memory efficiency
 - Deployment flexibility
 - Processing throughput
 
 ### Recommendations
-Based on our findings, we recommend:
+Based on my findings, I recommend:
 1. Deploying the FP16 TensorRT model for production use
 2. Using batch size 32 for optimal throughput
 3. Implementing dynamic batching for varying load conditions
