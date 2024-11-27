@@ -60,7 +60,7 @@ Based on my findings, I recommend:
 4. Regular performance monitoring and recalibration
 
 ### Future Optimizations
-Several opportunities exist for further optimization:
+I identified several opportunities for further optimization:
 - INT8 quantization investigation
 - Multi-stream inference implementation
 - Custom layer optimization
