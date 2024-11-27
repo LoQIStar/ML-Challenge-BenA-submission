@@ -2,10 +2,10 @@
 ## CNN Architecture and Automated Tuning Implementation
 
 ### Overview
-This report details our implementation of an automated hyperparameter optimization system for a Convolutional Neural Network (CNN) architecture using the Tiny ImageNet dataset. We employed a systematic approach to architecture design, hyperparameter tuning, and model evaluation to achieve optimal performance.
+This report details my implementation of an automated hyperparameter optimization system for a Convolutional Neural Network (CNN) architecture using the Tiny ImageNet dataset. I employed a systematic approach to architecture design, hyperparameter tuning, and model evaluation to achieve optimal performance.
 
 ### CNN Architecture Design
-The implemented CNN architecture balances model capacity with computational efficiency. Our base architecture consists of a modular design with the following components:
+The implemented CNN architecture balances model capacity with computational efficiency. My base architecture consists of a modular design with the following components:
 
 The convolutional backbone features multiple convolutional blocks, each containing:
 - Convolutional layers with batch normalization
@@ -21,7 +21,7 @@ The classifier head includes:
 ### Hyperparameter Optimization Strategy
 
 #### Parameter Search Space
-We identified key hyperparameters for optimization:
+I identified key hyperparameters for optimization:
 
 Architecture Parameters:
 - Number of convolutional layers (range: 3-5)
@@ -36,7 +36,7 @@ Training Parameters:
 - Weight decay (range: 1e-6 to 1e-3)
 
 #### Optimization Implementation
-We utilized Optuna for hyperparameter optimization, implementing:
+I utilized Optuna for hyperparameter optimization, implementing:
 - Tree-structured Parzen Estimators for parameter sampling
 - Median pruning for early stopping of unpromising trials
 - Asynchronous parallel optimization
@@ -71,7 +71,7 @@ Final model performance achieved:
 ### Analysis and Insights
 
 #### Key Findings
-Our optimization process revealed several important insights:
+My optimization process revealed several important insights:
 1. The model demonstrated optimal performance with four convolutional layers, suggesting this depth provides the right balance between model capacity and trainability.
 2. Moderate dropout rates (0.3) proved essential for regularization while maintaining model capacity.
 3. Learning rate optimization was crucial, with values around 2.4e-4 consistently performing best.
@@ -106,7 +106,7 @@ Dependencies:
 
 ### Conclusions and Recommendations
 
-Our automated hyperparameter optimization implementation successfully achieved:
+My automated hyperparameter optimization implementation successfully achieved:
 1. Robust model architecture identification
 2. Efficient hyperparameter optimization
 3. Strong final model performance

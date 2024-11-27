@@ -3,12 +3,12 @@
 
 ### Summary
 
-This report presents our implementation and analysis of model quantization for a Vision Transformer (ViT) architecture. Through careful optimization and benchmarking, we achieved significant performance improvements while maintaining model accuracy. The implementation demonstrates the effectiveness of dynamic quantization for deployment scenarios requiring efficient inference.
+This report presents our implementation and analysis of model quantization for a Vision Transformer (ViT) architecture. Through careful optimization and benchmarking, I achieved significant performance improvements while maintaining model accuracy. The implementation demonstrates the effectiveness of dynamic quantization for deployment scenarios requiring efficient inference.
 
 ### Implementation Approach
 
 #### Model Selection and Configuration
-We selected the DINOv2 Vision Transformer model from the Facebook AI Research team, accessed through PyTorch Hub. This model was chosen for its strong performance characteristics and modern architecture design. The base model configuration includes:
+I selected the DINOv2 Vision Transformer model from the Facebook AI Research team, accessed through PyTorch Hub. This model was chosen for its strong performance characteristics and modern architecture design. The base model configuration includes:
 
 - Architecture: Vision Transformer (ViT-Base/16)
 - Input Resolution: 224x224 pixels
@@ -18,7 +18,7 @@ We selected the DINOv2 Vision Transformer model from the Facebook AI Research te
 - Number of Transformer Layers: 12
 
 #### Data Preparation
-We implemented a robust data pipeline for the Tiny ImageNet dataset, incorporating:
+I implemented a robust data pipeline for the Tiny ImageNet dataset, incorporating:
 
 - Center cropping to 224x224 pixels
 - Normalization using ImageNet statistics
@@ -30,7 +30,7 @@ The validation subset was carefully curated to ensure representative evaluation 
 ### Quantization Implementation
 
 #### Dynamic Quantization Process
-We implemented dynamic quantization using PyTorch's quantization framework, focusing on:
+I implemented dynamic quantization using PyTorch's quantization framework, focusing on:
 
 - Quantizing linear layers to INT8
 - Maintaining floating-point activations
@@ -42,7 +42,7 @@ The quantization process was applied systematically with careful attention to nu
 ### Performance Analysis
 
 #### Inference Time Comparison
-Comprehensive benchmarking revealed significant performance improvements:
+My comprehensive benchmarking revealed significant performance improvements:
 
 | Metric                    | Original Model | Quantized Model | Improvement |
 |--------------------------|----------------|-----------------|-------------|
@@ -89,7 +89,7 @@ The implementation demonstrated several important characteristics:
 
 ### Deployment Considerations
 
-For production deployment, we recommend:
+For production deployment, I recommend:
 
 1. Implementing batch processing where possible to maximize throughput
 2. Monitoring accuracy on production data to ensure consistent performance
