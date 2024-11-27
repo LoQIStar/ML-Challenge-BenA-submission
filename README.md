@@ -117,6 +117,4 @@ Recommended production setup:
 ## 📈 Benchmarking Results
 ![Performance Comparison: Original vs Optimized Model](docs/assets/performance_chart.png)
 
-## 📝 License
-MIT License - see LICENSE file for details
 
