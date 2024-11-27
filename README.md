@@ -1,4 +1,4 @@
-# My Technical Implementation
+# BenA Technical Implementation
 ## Machine Learning Engineer Coding Challenge
 
 ### Summary
