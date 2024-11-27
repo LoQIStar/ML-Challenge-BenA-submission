@@ -7,6 +7,7 @@
 
 ## 📋 Table of Contents
 - [Overview](#overview)
+- [Challenge Parts](#challenge-parts)
 - [Key Features](#key-features)
 - [Prerequisites](#prerequisites)
 - [Quick Start](#quick-start)
@@ -19,6 +20,22 @@ A comprehensive implementation of Vision Transformer optimization, featuring:
 - Model quantization with minimal accuracy loss
 - Automated hyperparameter optimization
 - TensorRT acceleration for production deployment
+
+## 🎯 Challenge Parts
+### Part 1: Model Quantization ([Report](part1/part1-submission-quantization-report.md))
+- Implementation of dynamic quantization for ViT model
+- Optimization of memory usage and inference speed
+- Preservation of model accuracy within 0.3%
+
+### Part 2: Hyperparameter Optimization ([Report](part2/part2-submissions-hyperparameter-report.md))
+- Automated architecture search implementation
+- Systematic hyperparameter tuning
+- Cross-validation and performance analysis
+
+### Part 3: TensorRT Acceleration ([Report](part3/part3-submission.report.md))
+- Model conversion to TensorRT format
+- Implementation of FP16 precision optimization
+- Dynamic batching and custom layer optimization
 
 ## ✨ Key Features
 - **36.6%** faster inference time
