@@ -3,7 +3,7 @@
 
 ### Summary
 
-This comprehensive report examines the technical challenges, hardware considerations, and deployment constraints encountered during the implementation of our three-part machine learning engineering project. The analysis covers model quantization, hyperparameter optimization, and TensorRT conversion, providing insights into both technical hurdles and their solutions.
+This comprehensive report examines the technical challenges, hardware considerations, and deployment constraints encountered during the implementation of the three-part machine learning engineering project. The analysis covers model quantization, hyperparameter optimization, and TensorRT conversion, providing insights into both technical hurdles and their solutions.
 
 ### Hardware Environment
 
@@ -52,7 +52,7 @@ Critical dependencies include:
 
 ### Implementation Solutions
 
-Our implementation addressed these challenges through carefully designed solutions:
+my implementation addressed these challenges through carefully designed solutions:
 
 Memory optimization strategies included gradient checkpointing for Vision Transformer training, reducing memory footprint by 40% with minimal impact on training time. Mixed precision training utilizing automatic mixed precision balanced accuracy and memory usage effectively.
 
