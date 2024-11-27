@@ -55,7 +55,7 @@ A comprehensive implementation of Vision Transformer optimization, featuring:
 ## 🚀 Quick Start
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/vit-optimization.git
+git clone https://github.com/LoQIStar/ML-Challenge-BenA-submission.git
 
 # Install dependencies
 pip install -r requirements.txt
