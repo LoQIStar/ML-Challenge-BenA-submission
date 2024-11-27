@@ -42,7 +42,7 @@ The quantization process was applied systematically with careful attention to nu
 ### Performance Analysis
 
 #### Inference Time Comparison
-the benchmarking revealed significant performance improvements:
+My benchmarking revealed significant performance improvements:
 
 | Metric                    | Original Model | Quantized Model | Improvement |
 |--------------------------|----------------|-----------------|-------------|
