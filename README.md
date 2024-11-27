@@ -1,4 +1,4 @@
-# Technical Implementation Challenges and Deployment Analysis
+# Technical Implementation Challenges and Deployment
 ## Machine Learning Engineer Coding Challenge
 
 ### Summary
