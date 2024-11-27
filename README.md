@@ -26,16 +26,19 @@ A comprehensive implementation of Vision Transformer optimization, featuring:
 - Implementation of dynamic quantization for ViT model
 - Optimization of memory usage and inference speed
 - Preservation of model accuracy within 0.3%
+- 📓 [Deployment Implementation](part1/deployment-notebook.ipynb)
 
 ### Part 2: Hyperparameter Optimization ([Report](part2/part2-submissions-hyperparameter-report.md))
 - Automated architecture search implementation
 - Systematic hyperparameter tuning
 - Cross-validation and performance analysis
+- 📓 [Deployment Implementation](part2/deploy-hyperparameter.ipynb)
 
 ### Part 3: TensorRT Acceleration ([Report](part3/part3-submission.report.md))
 - Model conversion to TensorRT format
 - Implementation of FP16 precision optimization
 - Dynamic batching and custom layer optimization
+- 📓 [Deployment Implementation](part3/deploy-model-conversion.ipynb)
 
 ## ✨ Key Features
 - **36.6%** faster inference time
