@@ -1,9 +1,8 @@
-# utils/dataset.py
 import torch
 from torchvision import transforms, datasets
 from torch.utils.data import DataLoader
 import os
-import json
+import shutil
 
 class TinyImageNetDataset:
     def __init__(self, root_dir, split='train', transform=None):
@@ -23,41 +22,33 @@ class TinyImageNetDataset:
         with open(wnids_path, 'r') as f:
             self.class_to_idx = {line.strip(): idx for idx, line in enumerate(f)}
         
-        # For validation set, we need to restructure the data
+        # For validation set, restructure if needed
         if split == 'val':
             val_dir = os.path.join(root_dir, 'val')
-            if not os.path.exists(os.path.join(val_dir, list(self.class_to_idx.keys())[0])):
-                self._restructure_validation_set(val_dir)
+            images_dir = os.path.join(val_dir, 'images')
+            if os.path.exists(images_dir):  # Need to restructure
+                self._restructure_validation_set(root_dir, val_dir)
         
         # Create dataset
-        data_dir = os.path.join(root_dir, split)
+        split_dir = os.path.join(root_dir, split)
         self.dataset = datasets.ImageFolder(
-            root=data_dir,
+            root=split_dir,
             transform=self.transform
         )
-        
-        # Update class indices to match wnids.txt
-        if split == 'train':
-            self.dataset.class_to_idx = self.class_to_idx
-            # Remap targets
-            for idx in range(len(self.dataset.targets)):
-                old_target = self.dataset.targets[idx]
-                class_name = self.dataset.classes[old_target]
-                new_target = self.class_to_idx[class_name]
-                self.dataset.targets[idx] = new_target
         
         # Print dataset information
         print(f"\nDataset Info ({split} split):")
         print(f"Number of images: {len(self.dataset)}")
         print(f"Number of classes: {len(self.dataset.classes)}")
-        print(f"Sample class mapping: {dict(list(self.dataset.class_to_idx.items())[:5])}")
+        print(f"First few class indices: {dict(list(self.dataset.class_to_idx.items())[:5])}")
         
-    def _restructure_validation_set(self, val_dir):
+    def _restructure_validation_set(self, root_dir, val_dir):
         """Restructure validation set to match ImageFolder format"""
-        import shutil
+        print("Restructuring validation set...")
         
         # Read validation annotations
         val_annotations_file = os.path.join(val_dir, 'val_annotations.txt')
+        images_dir = os.path.join(val_dir, 'images')
         
         # Create class directories
         for class_id in self.class_to_idx.keys():
@@ -67,10 +58,15 @@ class TinyImageNetDataset:
         with open(val_annotations_file, 'r') as f:
             for line in f:
                 img_name, class_id, *_ = line.strip().split('\t')
-                src = os.path.join(val_dir, 'images', img_name)
+                src = os.path.join(images_dir, img_name)
                 dst = os.path.join(val_dir, class_id, img_name)
                 if os.path.exists(src):
                     shutil.move(src, dst)
+        
+        # Clean up
+        if os.path.exists(images_dir):
+            shutil.rmtree(images_dir)
+        print("Validation set restructured.")
     
     def get_loader(self, batch_size=32, shuffle=True, num_workers=4):
         return DataLoader(
@@ -79,4 +75,4 @@ class TinyImageNetDataset:
             shuffle=shuffle,
             num_workers=num_workers,
             pin_memory=True
-        )
+        ) 

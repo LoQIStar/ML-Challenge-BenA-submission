@@ -1,42 +1,39 @@
 # part1/quantization.py
 import torch
-import torch.quantization
-from torch.ao.quantization import get_default_qconfig
-from torch.ao.quantization.quantize_fx import prepare_fx, convert_fx
+from timm import create_model
+import copy
+import numpy as np
 
 class ModelQuantizer:
-    def __init__(self, model_name="facebook/dino-vitb16"):
-        self.original_model = torch.hub.load(
-            'facebookresearch/dino:main', 
-            model_name
-        )
+    def __init__(self, model_name="vit_base_patch16_224_dino", device='cuda' if torch.cuda.is_available() else 'cpu'):
+        self.device = device
+        self.original_model = create_model(
+            model_name,
+            pretrained=True
+        ).to(self.device)
         self.original_model.eval()
-        
-    def quantize_dynamic(self):
-        # Dynamic quantization
-        quantized_model = torch.quantization.quantize_dynamic(
-            self.original_model,
-            {torch.nn.Linear},  # Quantize only linear layers
-            dtype=torch.qint8
-        )
-        return quantized_model
     
-    def quantize_static(self, calibration_loader):
-        # Static quantization
-        qconfig = get_default_qconfig("fbgemm")
-        qconfig_dict = {"": qconfig}
+    def quantize_dynamic(self):
+        """Simple 8-bit quantization"""
+        model_cpu = copy.deepcopy(self.original_model).cpu()
+        model_cpu.eval()
         
-        model_to_quantize = self.original_model
+        def quantize_weights(tensor, num_bits=8):
+            # Compute the scaling factor
+            max_val = torch.max(torch.abs(tensor))
+            scale = max_val / (2 ** (num_bits - 1) - 1)
+            
+            # Quantize
+            quantized = torch.round(tensor / scale)
+            quantized = torch.clamp(quantized, -2**(num_bits-1), 2**(num_bits-1)-1)
+            
+            # Dequantize
+            dequantized = quantized * scale
+            return dequantized
         
-        # Prepare
-        model_prepared = prepare_fx(model_to_quantize, qconfig_dict)
-        
-        # Calibrate
+        # Apply quantization to all parameters
         with torch.no_grad():
-            for inputs, _ in calibration_loader:
-                model_prepared(inputs)
-                
-        # Convert
-        quantized_model = convert_fx(model_prepared)
+            for param in model_cpu.parameters():
+                param.data = quantize_weights(param.data)
         
-        return quantized_model
+        return model_cpu

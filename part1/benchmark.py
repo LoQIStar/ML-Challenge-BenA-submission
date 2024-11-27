@@ -1,44 +1,55 @@
 # part1/benchmark.py
-import time
 import torch
-import numpy as np
+import time
 from tqdm import tqdm
 
 class ModelBenchmark:
-    def __init__(self, device='cuda'):
+    def __init__(self, device='cuda' if torch.cuda.is_available() else 'cpu'):
         self.device = device
-        
-    def measure_inference_time(self, model, test_loader, num_runs=100):
-        model = model.to(self.device)
+
+    def measure_inference_time(self, model, dataloader, num_iterations=100):
+        model.eval()
+        device = next(model.parameters()).device
+        total_time = 0
         times = []
-        accuracies = []
+        correct = 0
+        total = 0
+        
+        print(f"\nRunning {num_iterations} iterations on {device.type.upper()}")
         
         with torch.no_grad():
-            for _ in tqdm(range(num_runs)):
-                batch_times = []
-                correct = 0
-                total = 0
+            for i in tqdm(range(num_iterations)):
+                # Get a batch of data
+                try:
+                    inputs, labels = next(iter(dataloader))
+                except StopIteration:
+                    dataloader_iter = iter(dataloader)
+                    inputs, labels = next(dataloader_iter)
                 
-                for inputs, labels in test_loader:
-                    inputs = inputs.to(self.device)
-                    labels = labels.to(self.device)
-                    
-                    start_time = time.time()
-                    outputs = model(inputs)
-                    batch_time = time.time() - start_time
-                    
-                    _, predicted = torch.max(outputs.data, 1)
-                    total += labels.size(0)
-                    correct += (predicted == labels).sum().item()
-                    
-                    batch_times.append(batch_time)
+                inputs = inputs.to(device)
+                labels = labels.to(device)
                 
-                times.append(np.mean(batch_times))
-                accuracies.append(100 * correct / total)
+                # Measure inference time
+                start_time = time.time()
+                outputs = model(inputs)
+                end_time = time.time()
+                
+                # Calculate accuracy
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+                
+                # Record time
+                inference_time = (end_time - start_time) * 1000  # Convert to milliseconds
+                total_time += inference_time
+                times.append(inference_time)
+        
+        mean_time = total_time / num_iterations
+        std_time = torch.tensor(times).std().item()
+        accuracy = 100 * correct / total
         
         return {
-            'mean_inference_time': np.mean(times),
-            'std_inference_time': np.std(times),
-            'mean_accuracy': np.mean(accuracies),
-            'std_accuracy': np.std(accuracies)
+            'mean_inference_time': mean_time,
+            'std_inference_time': std_time,
+            'accuracy': accuracy
         }
