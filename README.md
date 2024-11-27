@@ -10,7 +10,7 @@ The analysis covers model quantization, hyperparameter optimization, and TensorR
 
 #### Development Infrastructure
 
-The project was developed and tested on the following hardware configuration:
+The Submission was developed and tested on the following hardware configuration:
 
 The primary development system utilized a NVIDIA T4 GPU with 16GB VRAM, supported by an Intel Xeon 8-core processor and 32GB of DDR4 system memory. Storage was provided by a 512GB NVMe SSD. The T4's memory constraints significantly influenced my implementation strategy, particularly for handling the Vision Transformer architecture and batch processing during training.
 
@@ -61,7 +61,7 @@ Performance optimization focused on data pipeline efficiency, implementing memor
 
 ### Deployment Recommendations
 
-For successful deployment, i recommend:
+For successful deployment, i would recommend:
 
 The production environment should utilize dedicated GPU instances such NVDIA L40, T4 Machines with comprehensive monitoring systems for resource utilization and regular performance profiling. Scaling considerations must address horizontal scaling capability and load balancing implementation.
 
