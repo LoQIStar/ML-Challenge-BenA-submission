@@ -3,7 +3,7 @@
 
 ### Summary
 
-This report presents our implementation and analysis of model quantization for a Vision Transformer (ViT) architecture. Through careful optimization and benchmarking, I achieved significant performance improvements while maintaining model accuracy. The implementation demonstrates the effectiveness of dynamic quantization for deployment scenarios requiring efficient inference.
+This report presents my implementation and analysis of model quantization for a Vision Transformer (ViT) architecture. Through careful optimization and benchmarking, I achieved significant performance improvements while maintaining model accuracy. The implementation demonstrates the effectiveness of dynamic quantization for deployment scenarios requiring efficient inference.
 
 ### Implementation Approach
 
