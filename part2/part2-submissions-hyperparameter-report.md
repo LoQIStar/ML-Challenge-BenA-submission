@@ -1,7 +1,7 @@
 # Hyperparameter Optimization Report
 ## CNN Architecture and Automated Tuning Implementation
 
-### Project Overview
+### Overview
 This report details our implementation of an automated hyperparameter optimization system for a Convolutional Neural Network (CNN) architecture using the Tiny ImageNet dataset. We employed a systematic approach to architecture design, hyperparameter tuning, and model evaluation to achieve optimal performance.
 
 ### CNN Architecture Design
@@ -114,7 +114,7 @@ Our automated hyperparameter optimization implementation successfully achieved:
 
 The resulting model provides a strong foundation for production deployment, with clear performance characteristics and well-understood behavior patterns.
 
-### Future Work
+### Future Work & Improvements
 
 Several promising directions for further improvement include:
 1. Investigation of alternative architecture search spaces

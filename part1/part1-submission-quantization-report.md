@@ -1,7 +1,7 @@
 # Model Quantization and Performance Analysis Report
 ## Vision Transformer Optimization Implementation
 
-### Executive Summary
+### Summary
 
 This report presents our implementation and analysis of model quantization for a Vision Transformer (ViT) architecture. Through careful optimization and benchmarking, we achieved significant performance improvements while maintaining model accuracy. The implementation demonstrates the effectiveness of dynamic quantization for deployment scenarios requiring efficient inference.
 
