@@ -61,5 +61,64 @@ def create_performance_chart():
     plt.savefig('docs/assets/performance_chart.png', dpi=300, bbox_inches='tight')
     plt.close()
 
+def create_training_progression_chart():
+    """Creates a chart showing training progression across all three parts"""
+    plt.figure(figsize=(12, 6))
+    
+    # Data for each part
+    epochs = range(1, 31)
+    part1_accuracy = [/* accuracy data */]
+    part2_accuracy = [/* accuracy data */]
+    part3_accuracy = [/* accuracy data */]
+    
+    plt.plot(epochs, part1_accuracy, label='Part 1: Quantized Model', marker='o')
+    plt.plot(epochs, part2_accuracy, label='Part 2: Optimized Architecture', marker='s')
+    plt.plot(epochs, part3_accuracy, label='Part 3: TensorRT Model', marker='^')
+    
+    plt.title('Training Progression Across All Parts')
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy (%)')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig('docs/assets/training_progression.png', dpi=300, bbox_inches='tight')
+    plt.close()
+
+def create_resource_usage_chart():
+    """Creates a chart comparing resource usage across implementations"""
+    metrics = ['GPU Memory (GB)', 'CPU Usage (%)', 'Disk I/O (MB/s)']
+    part1_resources = [/* resource data */]
+    part2_resources = [/* resource data */]
+    part3_resources = [/* resource data */]
+    
+    plt.figure(figsize=(10, 6))
+    x = np.arange(len(metrics))
+    width = 0.25
+    
+    plt.bar(x - width, part1_resources, width, label='Part 1')
+    plt.bar(x, part2_resources, width, label='Part 2')
+    plt.bar(x + width, part3_resources, width, label='Part 3')
+    
+    plt.title('Resource Usage Comparison')
+    plt.xticks(x, metrics)
+    plt.legend()
+    plt.savefig('docs/assets/resource_usage.png', dpi=300, bbox_inches='tight')
+    plt.close()
+
+def create_latency_distribution_chart():
+    """Creates a violin plot showing inference latency distribution"""
+    plt.figure(figsize=(10, 6))
+    
+    # Sample data for each implementation
+    part1_latencies = [/* latency data */]
+    part2_latencies = [/* latency data */]
+    part3_latencies = [/* latency data */]
+    
+    plt.violinplot([part1_latencies, part2_latencies, part3_latencies])
+    plt.xticks([1, 2, 3], ['Part 1', 'Part 2', 'Part 3'])
+    plt.ylabel('Latency (ms)')
+    plt.title('Inference Latency Distribution')
+    plt.savefig('docs/assets/latency_distribution.png', dpi=300, bbox_inches='tight')
+    plt.close()
+
 if __name__ == "__main__":
     create_performance_chart()
