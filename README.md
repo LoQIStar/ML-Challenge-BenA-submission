@@ -17,7 +17,12 @@
 - [Deployment Guide](#deployment-guide)
 
 ## 🎯 Overview
-A comprehensive implementation of Vision Transformer optimization, featuring:
+Note:
+There are a multitude of different ways we can implement this and improve it. For now I’ve submitted a basic version, we can discuss how this can be improved.
+I provisioned a NVDIA GPU to run training on the dataset (runpod.io)
+The Quantization script can be run a macos machine (however I do not recommend as the performance is significantly slower!)
+
+This is nn implementation of Vision Transformer optimization, featuring:
 - Model quantization with minimal accuracy loss
 - Automated hyperparameter optimization
 - TensorRT acceleration for production deployment
